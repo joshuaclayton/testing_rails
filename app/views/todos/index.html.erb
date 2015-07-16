@@ -2,6 +2,9 @@
 
 <ul class="todos">
   <% @todos.each do |todo| %>
-    <li><%= todo.title %></li>
+    <li class="<%= todo.complete? ? "completed" : "" %>">
+      <%= todo.title %>
+      <%= button_to "Mark complete", todo_completion_path(todo) %>
+    </li>
   <% end %>
 </ul>
