@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "User creates todo" do
+feature "User creates todo", js: true do
   scenario "successfully" do
     sign_in
     create_todo_titled title: "Buy eggs"
