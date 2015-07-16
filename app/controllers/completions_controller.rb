@@ -1,6 +1,6 @@
 class CompletionsController < ApplicationController
   def create
-    todo.mark_complete# update(completed_at: Time.current)
+    todo.mark_complete
     redirect_to root_path
   end
 
