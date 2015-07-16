@@ -10,7 +10,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.new(email: session[:current_email])
+    current_email = session[:current_email]
+    if current_email.present?
+      User.new(email: current_email)
+    else
+      Guest.new
+    end
   end
 
   def signed_in?

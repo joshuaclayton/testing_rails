@@ -13,16 +13,10 @@ RSpec.describe User do
   end
 
   describe "#signed_in?" do
-    it "returns true when an email is assigned" do
+    it "returns true" do
       user = User.new(email: "foo@example.com")
 
       expect(user).to be_signed_in
-    end
-
-    it "returns false when an email is nil" do
-      user = User.new(email: nil)
-
-      expect(user).not_to be_signed_in
     end
   end
 end
