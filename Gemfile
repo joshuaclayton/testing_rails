@@ -50,5 +50,6 @@ group :test do
   gem "capybara", "~> 2.4.4"
   gem "database_cleaner"
   gem "factory_girl_rails"
+  gem "formulaic"
   gem "poltergeist"
 end

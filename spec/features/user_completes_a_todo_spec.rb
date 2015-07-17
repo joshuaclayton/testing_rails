@@ -3,19 +3,12 @@ require "rails_helper"
 feature "User completes a todo" do
   scenario "successfully" do
     sign_in
-    create_todo_titled title: "Buy eggs"
-    create_todo_titled title: "Buy milk"
 
-    within "li:contains('Buy eggs')" do
-      click_on "Mark complete"
-    end
+    todos_page = Pages::Todos.new
+    todos_page.create_todo title: "Buy eggs"
+    todos_page.create_todo title: "Buy milk"
+    todos_page.mark_complete "Buy eggs"
 
-    expect(page).to have_css "ul.todos li.completed", text: "Buy eggs"
-  end
-
-  def create_todo_titled(title:)
-    click_on "Create todo"
-    fill_in "Title", with: title
-    click_on "Submit"
+    expect(todos_page).to have_completed_todo_titled "Buy eggs"
   end
 end

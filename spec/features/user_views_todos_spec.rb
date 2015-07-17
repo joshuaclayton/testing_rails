@@ -6,6 +6,7 @@ feature "User views todos" do
 
     sign_in_as email: "me@example.com"
 
-    expect(page).not_to have_css "ul.todos", text: "Buy milk"
+    todos_page = Pages::Todos.new
+    expect(todos_page).not_to have_todo_titled "Buy milk"
   end
 end

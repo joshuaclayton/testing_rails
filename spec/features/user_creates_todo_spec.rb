@@ -1,16 +1,12 @@
 require "rails_helper"
 
-feature "User creates todo", js: true do
+feature "User creates todo" do
   scenario "successfully" do
     sign_in
-    create_todo_titled title: "Buy eggs"
 
-    expect(page).to have_css "ul.todos", text: "Buy eggs"
-  end
+    todos_page = Pages::Todos.new
+    todos_page.create_todo title: "Buy eggs"
 
-  def create_todo_titled(title:)
-    click_on "Create todo"
-    fill_in "Title", with: title
-    click_on "Submit"
+    expect(todos_page).to have_todo_titled "Buy eggs"
   end
 end
